@@ -1,0 +1,19 @@
+#ert4
+#rm B
+for i in 2 3 4 6 8 9 12 16 18 24 36 48 72
+do 
+	
+	for j in 2 4 8 11 16 22 44 88
+	do
+		a=0
+		for k in 1 2 3 
+		do
+			c=$( ./ert4 $i $j )
+			((a+=c))
+		done
+		((c=a/3))
+		echo "Bx: $i  By: $j  : $c usec" >> B
+	done
+done
+c="$(sort -k 6 B)"
+echo "$c" > Results4	
